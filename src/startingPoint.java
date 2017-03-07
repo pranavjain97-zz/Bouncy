@@ -112,6 +112,23 @@ public class startingPoint extends Applet implements Runnable, KeyListener , Mou
 	
 	while(true)
 	{
+		int xTemp;
+		for(int i=0;i<p.length;i++){
+			
+			int fakei=i; 
+			xTemp=p[i].getX();
+			if(xTemp<0-p[i].getWidth()){
+			Random r=new Random();
+			if(i==0){
+				fakei=i+p.length;
+				
+			}
+			
+			p[i].setX(p[fakei-1].getX()+p[i].getWidth()+musicOn.level*10*r.nextInt(25));	
+			}
+			
+		}
+		
 		
 		gameOver=b.isGame_over(); 
 		
@@ -121,7 +138,11 @@ public class startingPoint extends Applet implements Runnable, KeyListener , Mou
 		  musicOn.level++;
 		  levelcheck=0;
 		}
-		levelcheck++;
+		if(!gameOver){
+			
+			levelcheck++;
+		}
+		
 		
 				
 		if(cityX>getWidth()*-1)
@@ -351,6 +372,7 @@ public class startingPoint extends Applet implements Runnable, KeyListener , Mou
 			musicOn.level=1; 
 			musicOn.music.play();
 			score=0;
+			levelcheck=0; 
 			
 			
 			

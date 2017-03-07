@@ -29,21 +29,23 @@ public class Platform {
 
 	public void updatePlat(startingPoint o1,Ball b){
 		
-		x-=musicOn.level;
+		x+=-(musicOn.level);
 		
 //		x+=dx;  //keep going left
 	    if(x<0-width){  //recurring platforms 
 		
 		
 		Random r=new Random(); //random heights and widths
-		y=o1.getHeight()-40-r.nextInt(400);
-		x=o1.getWidth()+r.nextInt(300);
+		y=o1.getHeight()-40-r.nextInt(300);
+//		x=o1.getWidth()+r.nextInt(300);  Will control the x from starting point. Overalapping platforms bug. 
 		
 	    }
 		collisionDetection(b);
 		
 			}	
 	
+	
+
 	public void paint(Graphics g){ 
 
 		 g.setColor(Color.BLUE); 
@@ -68,4 +70,17 @@ public class Platform {
 	}		
 	
   }
+	
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
 }
